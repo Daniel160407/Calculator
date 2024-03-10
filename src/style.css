@@ -1,0 +1,35 @@
+header {
+    justify-content: center;
+}
+
+.wrapper {
+    justify-content: center;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 2rem;
+}
+
+header {
+    display: flex;
+    place-items: center;
+    justify-content: center; /* Add this line */
+    padding-right: calc(var(--section-gap) / 2);
+    line-height: 1.5;
+}
+
+.logo {
+    margin: 0 2rem 0 0;
+}
+
+header .wrapper {
+    display: flex;
+    place-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center; /* Add this line */
+}
+
+#result{
+    color: #f4f4f4;
+}
