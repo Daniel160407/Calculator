@@ -1,23 +1,33 @@
 class InputtedData {
-    constructor(var1, var2, command) {
-        this.var1 = var1;
-        this.var2 = var2;
-        this.command = command;
+    constructor() {
+        this.var1 = "0";
+        this.var2 = "0";
+        this.command = null;
+        this.permission = false;
     }
 
     setVar(number) {
-        if (this.var1 === undefined||this.var1===null) {
-            this.var1 = number;
+        const result = document.getElementById('result');
+        result.innerText = result.innerText === '0' ? number : result.innerText + number;
+
+        if (!this.permission) {
+            this.var1 = this.var1 === '0' ? String(number) : this.var1.toString() + number;
         } else {
-            this.var2 = number;
+            this.var2 = this.var2 === '0' ? String(number) : this.var2.toString() + number;
         }
     }
 
+
     setCommand(command) {
         this.command = command;
+        this.permission = true;
+        document.getElementById('result').innerText += command;
     }
 
     calculate() {
+        this.var1 = parseInt(this.var1);
+        this.var2 = parseInt(this.var2);
+
         let result;
         switch (this.command) {
             case "+":
@@ -38,12 +48,13 @@ class InputtedData {
         }
         document.getElementById("result").innerText = result;
     }
-    
-    reset(){
-        this.var1=null;
-        this.var2=null;
-        this.command=null;
-        document.getElementById("result").innerText="";
+
+    reset() {
+        this.var1 = "0";
+        this.var2 = "0";
+        this.command = null;
+        this.permission = false;
+        document.getElementById("result").innerText = "0";
     }
 }
 
